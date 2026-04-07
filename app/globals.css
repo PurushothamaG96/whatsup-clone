@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --wa-bg: #111b21;
+  --wa-panel-bg: #202c33;
+  --wa-sidebar-bg: #111b21;
+  --wa-chat-bg: #0b141a;
+  --wa-input-bg: #2a3942;
+  --wa-text-primary: #e9edef;
+  --wa-text-secondary: #8696a0;
+  --wa-text-muted: #667781;
+  --wa-green: #00a884;
+  --wa-green-dark: #008f72;
+  --wa-blue: #53bdeb;
+  --wa-teal: #025144;
+  --wa-message-out: #005c4b;
+  --wa-message-in: #202c33;
+  --wa-divider: #222d34;
+  --wa-hover: #2a3942;
+  --wa-icon: #aebac1;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background-color: var(--wa-bg);
+  color: var(--wa-text-primary);
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #374045; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #4a5568; }
+
+.chat-bg { background-color: var(--wa-chat-bg); }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-6px); }
+}
+
+.message-enter { animation: fadeIn 0.2s ease-out; }
+
+.typing-dot {
+  width: 8px; height: 8px;
+  background: var(--wa-text-secondary);
+  border-radius: 50%;
+  animation: typingBounce 1.2s infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+.check-read { color: var(--wa-blue); }
+.check-delivered { color: var(--wa-text-secondary); }
+.check-sent { color: var(--wa-text-secondary); }
+
+.avatar-online { position: relative; }
+.avatar-online::after {
+  content: '';
+  position: absolute;
+  bottom: 1px; right: 1px;
+  width: 10px; height: 10px;
+  background: var(--wa-green);
+  border-radius: 50%;
+  border: 2px solid var(--wa-sidebar-bg);
+}
