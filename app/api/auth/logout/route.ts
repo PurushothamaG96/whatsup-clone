@@ -16,6 +16,7 @@ export async function POST() {
 
     const response = NextResponse.json({ message: "Logged out successfully" });
     response.cookies.delete("token");
+    response.cookies.delete("client_token");
     return response;
   } catch (error) {
     console.error("Logout error:", error);

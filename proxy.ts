@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyToken } from "./lib/auth";
 
-const protectedRoutes = ["/chat"];
+const protectedRoutes = ["/chat", "/setup"];
 const authRoutes = ["/"];
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const token = req.cookies.get("token")?.value;
   const user = token ? verifyToken(token) : null;

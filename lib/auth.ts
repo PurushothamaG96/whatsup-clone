@@ -12,12 +12,20 @@ export function signToken(payload: JWTPayload): string {
   return jwt.sign(payload, JWT_SECRET, { expiresIn: "7d" });
 }
 
+export function signResetToken(payload: JWTPayload): string {
+  return jwt.sign(payload, JWT_SECRET, { expiresIn: "1h" });
+}
+
 export function verifyToken(token: string): JWTPayload | null {
   try {
     return jwt.verify(token, JWT_SECRET) as JWTPayload;
   } catch {
     return null;
   }
+}
+
+export function verifyResetToken(token: string): JWTPayload | null {
+  return verifyToken(token);
 }
 
 export async function getAuthUser(): Promise<JWTPayload | null> {
