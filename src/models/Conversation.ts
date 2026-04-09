@@ -1,7 +1,6 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
 
 export interface IConversation extends Document {
-  _id: string;
   participants: mongoose.Types.ObjectId[];
   isGroup: boolean;
   groupName?: string;
