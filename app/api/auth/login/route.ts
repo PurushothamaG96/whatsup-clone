@@ -61,6 +61,15 @@ export async function POST(req: NextRequest) {
       path: "/",
     });
 
+    // Non-httpOnly token for socket.io client authentication
+    response.cookies.set("client_token", token, {
+      httpOnly: false,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 7 * 24 * 60 * 60,
+      path: "/",
+    });
+
     return response;
   } catch (error) {
     console.error("Login error:", error);
