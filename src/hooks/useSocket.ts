@@ -3,7 +3,6 @@ import { useEffect, useRef } from "react";
 import { io, Socket } from "socket.io-client";
 import { useChatStore } from "@/store/chatStore";
 import { useAuthStore } from "@/store/authStore";
-import Cookies from "js-cookie";
 
 let socket: Socket | null = null;
 

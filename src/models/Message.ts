@@ -4,7 +4,6 @@ export type MessageType = "text" | "image" | "video" | "audio" | "document" | "e
 export type MessageStatus = "sent" | "delivered" | "read";
 
 export interface IMessage extends Document {
-  _id: string;
   conversationId: mongoose.Types.ObjectId;
   sender: mongoose.Types.ObjectId;
   content: string;
